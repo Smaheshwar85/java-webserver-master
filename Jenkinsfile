@@ -47,7 +47,7 @@ stage('Push to GCR') {
 		    '''
                   }
 	 
-        sh "docker push gcr.io/devopsjunction23/java-webserver"
+        sh "docker push gcr.io/devopsjunction23/java-webserver:latest"
     }
 }
     
