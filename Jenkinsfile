@@ -47,7 +47,7 @@
                 //}
                 
                 // Push the Docker image to GCR
-                sh "docker push $PROJECT_ID:${env.BUILD_NUMBER}"
+                sh "docker push ${GCR_REGISTRY}/$PROJECT_ID:${env.BUILD_NUMBER}"
             }
         }
     
