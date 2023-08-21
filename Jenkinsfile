@@ -30,24 +30,15 @@
  stage('Build Docker Image') {
     steps {
         script {
-            sh "docker build -t ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER} ."
+           // sh "docker build -t ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER} ."
+		 sh '''
+                   gcloud container builds submit -t ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER} ."
+		    '''
         }
     }
 }
 		
-stage('Push to GCR') {
-	
-    steps {
-	     withCredentials([file(credentialsId: 'cred_host', variable: 'CRED_HOST')]) {
-                    sh '''
-                    gcloud version
-                    gcloud auth activate-service-account --key-file="$CRED_HOST"
-		    '''
-                  }
-	 
-        sh "docker push ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER}"
-    }
-}
+
     
             
     }
