@@ -45,7 +45,7 @@ pipeline {
                                         [$class: 'GroovyScript', 
                                         script: 'return["Could not get AMi Information"]', 
                                         script: [
-                                            script: '''
+                                            script: sh'''
                                                     if (ENV.equals("test")){
                                                       gcloud config set project ${params.DEST_PROJECT_ID}
 			                            gcloud artifacts repositories create destRepo 
