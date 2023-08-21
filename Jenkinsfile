@@ -42,7 +42,7 @@ stage('Push to GCR') {
                     gcloud version
 		    gcloud auth list
                     gcloud auth activate-service-account --key-file="$CRED_HOST"
-		    gcloud auth configure-docker gcr.io/devopsjunction23/java-webserver
+		    gcloud auth configure-docker gcr.io/devopsjunction23/java-webserver${env.BUILD_NUMBER}
 
 		    '''
                   }
