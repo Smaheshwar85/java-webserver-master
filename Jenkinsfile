@@ -37,6 +37,8 @@
 		
 stage('Push to GCR') {
     steps {
+	    sh'''
+     gcloud auth activate-service-account'''
         sh "docker push ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER}"
     }
 }
