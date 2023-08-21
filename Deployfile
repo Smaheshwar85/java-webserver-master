@@ -56,8 +56,8 @@ pipeline {
                          if (ENV.equals("test")){
                                                   sh '''
                                                       gcloud config set project terraform-gcp-395808
-			                              gcloud artifacts repositories create dest_repo --repository-format=docker --location=us-central1 --description="created repo"
-                                                      gcrane cp us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/terraform-gcp-395808/dest_repo/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver'''
+			                              gcloud artifacts repositories create destrepo --repository-format=docker --location=us-central1 --description="created repo"
+                                                      gcrane cp us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/terraform-gcp-395808/destrepo/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver'''
                                                        }
                                                    
                                                     else (ENV.equals("prod")){
