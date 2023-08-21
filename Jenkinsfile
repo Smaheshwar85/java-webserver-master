@@ -10,6 +10,7 @@ pipeline{
         PROD_IMAGE_TAG = "prod-${BUILD_NUMBER}"
         //GCR_CREDENTIALS = credentials('your-gcr-credentials-id')
     }
+	
         stages{
 		 stage('Git Checkout'){
 		     steps{
