@@ -30,13 +30,13 @@
             steps {
                 // Build the Docker image using the Dockerfile in the project directory
                 script {
-                  sh " docker build -t "${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}" .
-			//sh "docker build -t kammana/hariapp:${env.BUILD_NUMBER} ."
+                  sh " docker build -t "${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}" ."
+			
                 }
             }
         }
 		
-		   stage('Push to GCR') {
+      stage('Push to GCR') {
             steps {
                 // Authenticate with GCP using a service account key
                 //withCredentials([string(credentialsId: 'gcp-service-account-key', variable: 'GCP_SA_KEY')]) {
