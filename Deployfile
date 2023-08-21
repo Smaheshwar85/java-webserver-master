@@ -49,7 +49,7 @@ pipeline {
                                                     if (ENV.equals("test")){
                                                       gcloud config set project ${params.DEST_PROJECT_ID}
 			                            gcloud artifacts repositories create destRepo 
-                                                      gcrane cp ${params.LOCATION}-docker.pkg.dev/${params.PROJECT_ID}/xyz-java2/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver {params.LOCATION}-docker.pkg.dev/${params.DEST_PROJECT_ID}/destRepo/gcr.io/devopsjunction23/java-webserver
+                                                      gcrane cp us-central1-docker.pkg.dev/${params.PROJECT_ID}/xyz-java2/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver {params.LOCATION}-docker.pkg.dev/${params.DEST_PROJECT_ID}/destRepo/gcr.io/devopsjunction23/java-webserver
                                                        }
                                                    
                                                     else if(ENV.equals("prod")){
