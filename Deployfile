@@ -1,5 +1,13 @@
 pipeline {
     agent any
+     parameters {
+        string(name: 'PROJECT_ID', defaultValue: 'devopsjunction23', description: 'Google Cloud Project ID')
+        string(name: 'REGION', defaultValue: 'us-central1', description: 'Google Cloud Region')
+		string(name: 'DEST_PROJECT_ID', defaultValue: 'terraform-gcp-395808', description: 'Google Cloud destinationProject ID')
+		string(name: 'REPO_NAME', defaultValue: 'src', description: 'Google Cloud destinationProject ID')
+		string(name: 'DEST_REPO_NAME', defaultValue: 'dest', description: 'Google Cloud destinationProject ID')
+		string(name: 'LOCATION', defaultValue: 'US-central1', description: 'Google Cloud destinationProject ID')
+    }
         stages {
             stage('Parameters'){
                 steps {
@@ -40,7 +48,7 @@ pipeline {
                                             script: '''
                                                     if (ENV.equals("test")){
                                                       gcloud config set project ${params.DEST_PROJECT_ID}
-			                                          gcloud artifacts repositories create ${params.DEST_REPO_NAME}:${env.BUILD_NUMBER} --repository-format=docker --location=us-central1 --description="created repo"
+			                                          gcloud artifacts repositories create ${params.DEST_REPO_NAME}${env.BUILD_NUMBER} --repository-format=docker --location=us-central1 --description="created repo"
                                                       gcrane cp ${params.LOCATION}-docker.pkg.dev/${params.PROJECT_ID}/xyz-java2/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver {params.LOCATION}-docker.pkg.dev/${params.DEST_PROJECT_ID}/${params.DEST_REPO_NAME}:${env.BUILD_NUMBER}/gcr.io/devopsjunction23/java-webserver
                                                        }
                                                    
