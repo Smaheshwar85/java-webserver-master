@@ -1,6 +1,7 @@
 FROM centos:latest
 
 ENV JAVA_WEBSERVER_DEPLOY_DIR=/opt/java-webserver
+
 RUN yum -y update && \
     mkdir -p ${JAVA_WEBSERVER_DEPLOY_DIR} && \
     yum -y install java-11-openjdk-devel && \
