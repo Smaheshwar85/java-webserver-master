@@ -33,7 +33,8 @@ pipeline {
                 script {
                     def dockerImageTag = "${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
                     sh "docker build -t $dockerImageTag ."
-                    sh "docker push $dockerImageTag"
+                    sh "docker tag gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/my-project/my-repo/test-imagemy-image"
+                    sh "docker push us-central1-docker.pkg.dev/my-project/my-repo/test-imagemy-image"
                 }
             }
         }
