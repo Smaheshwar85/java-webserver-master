@@ -3,8 +3,7 @@ pipeline{
      tools {
     maven 'M3'
   }
-	
-    environment {
+ environment {
         //PROJECT_ID = 'your-project-id'
         IMAGE_NAME = 'sep-test'
         TEST_IMAGE_TAG = "test-${BUILD_NUMBER}"
