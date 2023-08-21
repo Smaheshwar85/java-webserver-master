@@ -30,7 +30,10 @@
             steps {
                 // Build the Docker image using the Dockerfile in the project directory
                 script {
-                  sh "docker build -t ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG} ."
+                 // sh "docker build -t ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG} ."
+
+			sh "docker build -t "${GCR_REGISTRY}/${PROJECT_ID}" ."
+
 			
                 }
             }
