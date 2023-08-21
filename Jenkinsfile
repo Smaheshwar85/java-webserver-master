@@ -34,11 +34,11 @@ pipeline {
                     def dockerImageTag = "${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
                   sh '''
                  
-                  gcloud artifacts repositories create xyz-java1 --repository-format=docker --location=us-central1 --description="created repo"
+                  gcloud artifacts repositories create xyz-java2 --repository-format=docker --location=us-central1 --description="created repo"
                   gcloud auth configure-docker us-central1-docker.pkg.dev'''
 
-                 sh "docker tag gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/devopsjunction23/xyz-java1/gcr.io/devopsjunction23/java-webserver"
-                  sh "docker push us-central1-docker.pkg.dev/devopsjunction23/xyz-java1/gcr.io/devopsjunction23/java-webserver"
+                 sh "docker tag gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver"
+                  sh "docker push us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver"
                       
                     //sh "docker build -t $dockerImageTag ."
                     //sh "docker tag gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/my-project/my-repo/test-imagemy-image"
