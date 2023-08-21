@@ -61,7 +61,7 @@ pipeline {
                                                        }
                                                    gcrane cp LOCATION1-docker.pkg.dev/PROJECT1/REPOSITORY1/IMAGE1 \
 LOCATION2-docker.pkg.dev/PROJECT2/REPOSITORY2/IMAGE2
-                                                    else if(ENV.equals("prod")){
+                                                    else (ENV.equals("prod")){
                                                         return["ami-sdf34sdf:  AMI with Java", "ami-sdf34ds: AMI with Python", "ami-sdf3sf3: AMI with Groovy"]
                                                     }
                     }
