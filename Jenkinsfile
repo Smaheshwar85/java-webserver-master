@@ -36,6 +36,7 @@
 }
 		
 stage('Push to GCR') {
+	
     steps {
 	     withCredentials([file(credentialsId: 'cred_host', variable: 'CRED_HOST')]) {
                     sh '''
