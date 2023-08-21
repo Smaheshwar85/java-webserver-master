@@ -31,6 +31,7 @@
                 // Build the Docker image using the Dockerfile in the project directory
                 script {
                  sh "docker build -t $PROJECT_ID:${env.BUILD_NUMBER} ."
+			
                 }
             }
         }
