@@ -18,7 +18,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 WORKDIR .
 # This copies to local fat jar inside the image
 ADD ./target/*.jar ${JAVA_WEBSERVER_DEPLOY_DIR}/
-RUN chmod -R 755 ./
+RUN chmod -R 755 ${JAVA_WEBSERVER_DEPLOY_DIR}
 #chmod -R 777 ./
 
 # Copy your Java application JAR or code to the container
