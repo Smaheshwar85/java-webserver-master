@@ -27,29 +27,19 @@
             }
         }
         
-        stage('Build Docker Image') {
-            steps {
-                // Build the Docker image using the Dockerfile in the project directory
-                script {
-			
-                 sh " docker build -t ${GCR_REGISTRY}/$PROJECT_ID:${env.BUILD_NUMBER} ."
-			
-                }
-            }
+stage('Build Docker Image') {
+    steps {
+        script {
+            sh "docker build -t ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER} ."
         }
+    }
+}
 		
-      stage('Push to GCR') {
-            steps {
-                // Authenticate with GCP using a service account key
-                //withCredentials([string(credentialsId: 'gcp-service-account-key', variable: 'GCP_SA_KEY')]) {
-                    //sh "echo ${GCP_SA_KEY} | base64 --decode > gcp-key.json"
-                   // sh "gcloud auth activate-service-account --key-file=gcp-key.json"
-                //}
-                
-                // Push the Docker image to GCR
-                sh "docker push ${GCR_REGISTRY}/$PROJECT_ID:${env.BUILD_NUMBER}"
-            }
-        }
+stage('Push to GCR') {
+    steps {
+        sh "docker push ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER}"
+    }
+}
     
             
     }
