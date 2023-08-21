@@ -29,28 +29,24 @@ pipeline {
                                     ]
                                 ],
                                 [$class: 'DynamicReferenceParameter', 
-                                    choiceType: 'ET_ORDERED_LIST', 
-                                    description: 'Select the  AMI based on the following infomration', 
-                                    name: 'Image Information', 
-                                    referencedParameters: 'ENV', 
-                                    script: 
-                                        [$class: 'GroovyScript', 
-                                        script: 'return["Could not get AMi Information"]', 
-                                        script: [
-                                            script: '''
-                                                    if (ENV.equals("test")){
-                                                      gcloud config set project ${params.DEST_PROJECT_ID}
-			                                          gcloud artifacts repositories create ${params.DEST_REPO_NAME}:${env.BUILD_NUMBER} --repository-format=docker --location=us-central1 --description="created repo"
-                                                      gcrane cp ${params.LOCATION}-docker.pkg.dev/${params.PROJECT_ID}/xyz-java2/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver {params.LOCATION}-docker.pkg.dev/${params.DEST_PROJECT_ID}/${params.DEST_REPO_NAME}:${env.BUILD_NUMBER}/gcr.io/devopsjunction23/java-webserver
-                                                       }
-                                                   
-                                                    else if(ENV.equals("prod")){
-                                                        return["ami-sdf34sdf:  AMI with Java", "ami-sdf34ds: AMI with Python", "ami-sdf3sf3: AMI with Groovy"]
-                                                    }
-                                                    '''
-                                                ]
-                                        ]
-                                ]
+ choiceType: 'ET_ORDERED_LIST', 
+ description: 'Select the AMI based on the following information', 
+ name: 'Image Information', 
+ referencedParameters: 'ENV', 
+ script: [
+     $class: 'GroovyScript', 
+     script: '''
+         if (ENV.equals("test")){
+             gcloud config set project ${params.DEST_PROJECT_ID}
+             gcloud artifacts repositories create ${params.DEST_REPO_NAME}:${env.BUILD_NUMBER} --repository-format=docker --location=us-central1 --description="created repo"
+             gcrane cp ${params.LOCATION}-docker.pkg.dev/${params.PROJECT_ID}/xyz-java2/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver {params.LOCATION}-docker.pkg.dev/${params.DEST_PROJECT_ID}/${params.DEST_REPO_NAME}:${env.BUILD_NUMBER}/gcr.io/devopsjunction23/java-webserver
+         }
+         else if(ENV.equals("prod")){
+             return ["ami-sdf34sdf: AMI with Java", "ami-sdf34ds: AMI with Python", "ami-sdf3sf3: AMI with Groovy"]
+         }
+     '''
+ ]]
+
                             ])
                         ])
                     }
