@@ -40,6 +40,7 @@ stage('Push to GCR') {
 	     withCredentials([file(credentialsId: 'cred_host', variable: 'CRED_HOST')]) {
                     sh '''
                     gcloud version
+		    gcloud auth list
                     gcloud auth activate-service-account --key-file="$CRED_HOST"
 		    '''
                   }
