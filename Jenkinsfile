@@ -47,7 +47,7 @@ stage('Push to GCR') {
 		    '''
                   }
 	 
-        sh "docker push gcr.io/devopsjunction23/java-webserver:latest"
+        sh "docker push ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER}"
     }
 }
     
