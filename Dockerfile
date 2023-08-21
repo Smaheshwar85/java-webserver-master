@@ -13,5 +13,4 @@ ADD ./target/*.jar ${JAVA_WEBSERVER_DEPLOY_DIR}/
 RUN chmod -R 755 ./
 #chmod -R 777 ./
 
-
 EXPOSE 8080
