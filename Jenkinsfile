@@ -37,7 +37,7 @@ pipeline {
                   gcloud artifacts repositories create xyz-java1 --repository-format=docker --location=us-central1 --description="created repo"
                   gcloud auth configure-docker us-central1-docker.pkg.dev'''
 
-                 sh "docker tag gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/devopsjunction23/xyz-java/gcr.io/devopsjunction23/java-webserver"
+                 sh "docker tag gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/devopsjunction23/xyz-java1/gcr.io/devopsjunction23/java-webserver"
                   sh "docker push us-central1-docker.pkg.dev/devopsjunction23/xyz-java1/gcr.io/devopsjunction23/java-webserver"
                       
                     //sh "docker build -t $dockerImageTag ."
