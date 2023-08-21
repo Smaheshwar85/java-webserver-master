@@ -27,7 +27,7 @@
             }
         }
         
-stage('Build Docker Image') {
+ stage('Build Docker Image') {
     steps {
         script {
             sh "docker build -t ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER} ."
