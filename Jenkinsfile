@@ -4,6 +4,7 @@
      tools {
     maven 'M3'
   }
+	  
  environment {
         GCR_REGISTRY = "gcr.io" // Change to your GCR registry URL
         PROJECT_ID = "devopsjunction23" // Change to your GCP Project ID
