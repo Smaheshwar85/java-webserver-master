@@ -1,14 +1,13 @@
-pipeline{
+  pipeline{
     agent any  
      tools {
     maven 'M3'
   }
  environment {
-        //PROJECT_ID = 'your-project-id'
-        IMAGE_NAME = 'sep-test'
-        TEST_IMAGE_TAG = "test-${BUILD_NUMBER}"
-        PROD_IMAGE_TAG = "prod-${BUILD_NUMBER}"
-        //GCR_CREDENTIALS = credentials('your-gcr-credentials-id')
+        GCR_REGISTRY = "gcr.io" // Change to your GCR registry URL
+        PROJECT_ID = "devopsjunction23" // Change to your GCP Project ID
+        IMAGE_NAME = "java-webserver" // Change to your desired image name
+        IMAGE_TAG = "latest" // Change to your desired image tag
     }
 	
         stages{
@@ -27,18 +26,30 @@ pipeline{
             }
         }
         
-        stage('deploy to test') {
+        stage('Build Docker Image') {
             steps {
-                //withCredentials([file(credentialsId: 'cred', variable: 'CRED')]){
-                // Assuming you have a Maven project
-                sh '''
-                gcloud init
-                gcloud auth activate-service-account --key-file="$CRED"
-                gcloud app deploy target/java-webserver-1.0.0.jar
-                '''
+                // Build the Docker image using the Dockerfile in the project directory
+                script {
+                    def dockerImage = docker.build("${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}", '.')
+                }
             }
-            
         }
+		
+		   stage('Push to GCR') {
+            steps {
+                // Authenticate with GCP using a service account key
+                //withCredentials([string(credentialsId: 'gcp-service-account-key', variable: 'GCP_SA_KEY')]) {
+                    //sh "echo ${GCP_SA_KEY} | base64 --decode > gcp-key.json"
+                   // sh "gcloud auth activate-service-account --key-file=gcp-key.json"
+                //}
+                
+                // Push the Docker image to GCR
+                sh "docker push ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
+            }
+        }
+    
             
     }
 }
+
+  
