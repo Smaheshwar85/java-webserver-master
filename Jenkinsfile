@@ -32,7 +32,7 @@
         script {
            // sh "docker build -t ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER} ."
 		 sh '''
-                   gcloud container builds submit -t ${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${env.BUILD_NUMBER} .
+                   gcloud container builds submit -t gcr.io/devopsjunction23/java-webserver:${env.BUILD_NUMBER} .
 		    '''
         }
     }
