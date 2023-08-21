@@ -33,7 +33,7 @@ pipeline {
                 script {
                     def dockerImageTag = "${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
                   sh '''
-                  gcloud services enable artifactregistry.googleapis.com
+                 
                   gcloud artifacts repositories create xyz-java --repository-format=docker --location=us-central1 --description="created repo"
                   gcloud auth configure-docker us-central1-docker.pkg.dev'''
 
