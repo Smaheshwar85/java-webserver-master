@@ -33,7 +33,7 @@ pipeline {
                 script {
                     
                   sh '''
-                  gcloud config set projectgcloud config set project alert-result-396707
+                  
                   gcloud artifacts repositories create xyz-java2 --repository-format=docker --location=us-central1 --description="created repo"
                   gcloud auth configure-docker us-central1-docker.pkg.dev'''
 
