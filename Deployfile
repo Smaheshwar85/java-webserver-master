@@ -71,6 +71,7 @@ def command = """
 """
 
 sh(script: command, returnStatus: true)
+gcloud run deploy  --image us-central1-docker.pkg.dev/drayne/hellodraynerepo/hellodrayne 
                                                        }
                                               }
                                                    
