@@ -32,6 +32,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([file(credentialsId: 'cred', variable: 'CRED')]) {
+                 sh "docker build -t $dockerImageTag ."
                   sh '''
                   gcloud auth activate-service-account --key-file="$CRED"
                   printf 'yes' | gcloud artifacts repositories create xyz-java7 --repository-format=docker --location=us-central1 --description="created repo"
