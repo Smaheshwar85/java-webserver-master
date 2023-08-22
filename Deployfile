@@ -67,6 +67,7 @@ def command = """
     gcloud auth activate-service-account --key-file="$CRED"
     gcloud config set project terraform-gcp-395808
    printf 'yes' | gcloud artifacts repositories create $repositoryname --repository-format=docker --location=us-central1 --description="created repo"
+   gcloud auth configure-docker  us-central1-docker.pkg.dev
    gcrane cp us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/terraform-gcp-395808/$repositoryname/gcr.io/devopsjunction23/java-webserver
     gcloud run deploy  --image us-central1-docker.pkg.dev/terraform-gcp-395808/$repositoryname/gcr.io/devopsjunction23/java-webserver
 """
