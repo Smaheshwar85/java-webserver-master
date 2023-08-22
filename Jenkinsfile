@@ -34,11 +34,11 @@ pipeline {
                     withCredentials([file(credentialsId: 'cred', variable: 'CRED')]) {
                   sh '''
                   gcloud auth activate-service-account --key-file="$CRED"
-                  printf 'yes' | gcloud artifacts repositories create xyz-java4 --repository-format=docker --location=us-central1 --description="created repo"
+                  printf 'yes' | gcloud artifacts repositories create xyz-java5 --repository-format=docker --location=us-central1 --description="created repo"
                   gcloud auth configure-docker us-central1-docker.pkg.dev'''
 
-                 sh "docker tag gcr.io/alert-result-396707/java-webserver us-central1-docker.pkg.dev/alert-result-396707/xyz-java4/gcr.io/alert-result-396707/java-webserver"
-                  sh "docker push us-central1-docker.pkg.dev/alert-result-396707/xyz-java4/gcr.io/alert-result-396707/java-webserver"
+                 sh "docker tag gcr.io/alert-result-396707/java-webserver us-central1-docker.pkg.dev/alert-result-396707/xyz-java5/gcr.io/alert-result-396707/java-webserver"
+                  sh "docker push us-central1-docker.pkg.dev/alert-result-396707/xyz-java5/gcr.io/alert-result-396707/java-webserver"
                       
                     //sh "docker build -t $dockerImageTag ."
                     //sh "docker tag gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/my-project/my-repo/test-imagemy-image"
