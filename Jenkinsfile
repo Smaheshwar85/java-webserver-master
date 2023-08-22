@@ -31,7 +31,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImageTag = "${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
+                    
                   sh '''
                   gcloud config set projectgcloud config set project alert-result-396707
                   gcloud artifacts repositories create xyz-java2 --repository-format=docker --location=us-central1 --description="created repo"
