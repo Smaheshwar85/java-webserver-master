@@ -31,9 +31,9 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    
+                    withCredentials([file(credentialsId: 'cred', variable: 'CRED')]) {
                   sh '''
-                  
+                  gcloud auth activate-service-account --key-file="$CRED"
                   gcloud artifacts repositories create xyz-java2 --repository-format=docker --location=us-central1 --description="created repo"
                   gcloud auth configure-docker us-central1-docker.pkg.dev'''
 
@@ -43,6 +43,7 @@ pipeline {
                     //sh "docker build -t $dockerImageTag ."
                     //sh "docker tag gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/my-project/my-repo/test-imagemy-image"
                     //sh "docker push us-central1-docker.pkg.dev/my-project/my-repo/test-imagemy-image"
+                    }
                 }
             }
         }
