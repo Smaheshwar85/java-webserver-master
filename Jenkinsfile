@@ -36,7 +36,7 @@ pipeline {
                  sh "docker build -t $dockerImageTag ."
                def command = """
     gcloud auth activate-service-account --key-file="$CRED"
-    printf 'yes' | gcloud artifacts repositories create image:\${env.BUILD_NUMBER} --repository-format=docker --location=us-central1 --description="created repo"
+    printf 'yes' | gcloud artifacts repositories create image:{env.BUILD_NUMBER} --repository-format=docker --location=us-central1 --description="created repo"
     gcloud auth configure-docker us-central1-docker.pkg.dev
 """
 
