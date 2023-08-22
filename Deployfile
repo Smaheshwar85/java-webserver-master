@@ -1,5 +1,11 @@
 pipeline {
     agent any
+ environment {
+        GCR_REGISTRY = "gcr.io" // Change to your GCR registry URL
+        DEST_PROJECT_ID = "terraform-gcp-395808" // Change to your GCP Project ID
+        IMAGE_NAME = "java-webserver" // Change to your desired image name
+        IMAGE_TAG = "latest" // Change to your desired image tag
+    }
      parameters {
         string(name: 'PROJECT_ID', defaultValue: 'devopsjunction23', description: 'Google Cloud Project ID')
         string(name: 'REGION', defaultValue: 'us-central1', description: 'Google Cloud Region')
@@ -7,6 +13,7 @@ pipeline {
 		string(name: 'REPO_NAME', defaultValue: 'src', description: 'Google Cloud destinationProject ID')
 		string(name: 'DEST_REPO_NAME', defaultValue: 'dest', description: 'Google Cloud destinationProject ID')
 		string(name: 'LOCATION', defaultValue: 'US-central1', description: 'Google Cloud destinationProject ID')
+
     }
         stages {
             stage('Parameters'){
