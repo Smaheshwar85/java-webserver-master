@@ -54,12 +54,13 @@ pipeline {
                     script{
                         echo 'Deploy jars'
                          if (ENV.equals("test")){
+                                             def repositoryname = "${DEST_PROJECT_ID}-${env.BUILD_NUMBER}"
                                                withCredentials([file(credentialsId: 'cred', variable: 'CRED')]){
                                                   sh '''
                                                       gcloud auth activate-service-account --key-file="$CRED"
                                                       gcloud config set project terraform-gcp-395808
-			                              gcloud artifacts repositories create destrepo --repository-format=docker --location=us-central1 --description="created repo"
-                                                      gcrane cp us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/terraform-gcp-395808/destrepo/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver'''
+			                              gcloud artifacts repositories create $repositoryname --repository-format=docker --location=us-central1 --description="created repo"
+                                                      gcrane cp us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/terraform-gcp-395808/$repositoryname/us-central1-docker.pkg.dev/devopsjunction23/xyz-java2/gcr.io/devopsjunction23/java-webserver'''
                                                        }
                                               }
                                                    
