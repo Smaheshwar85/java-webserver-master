@@ -21,7 +21,8 @@ ADD ./target/java-webserver-1.0.0.jar .
 ADD ./target/original-java-webserver-1.0.0.jar .
 ADD ./target/java-webserver-1.0.0-sources.jar .
 ADD ./target/java-webserver-1.0.0-javadoc.jar .
-ADD /var/lib/jenkins/workspace/pipeline-docker/docroot .
+ADD ./docroot .
+#ADD /var/lib/jenkins/workspace/pipeline-docker/docroot .
 
 #ARG JAR_FILE=target/*.jar
 #COPY ${JAR_FILE} app.jar
