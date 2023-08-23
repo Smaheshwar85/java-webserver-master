@@ -34,6 +34,7 @@ pipeline {
                       sh 'ls -lrt /var/lib/jenkins/workspace/pipeline-docker'
                     sh 'mvn clean package -DskipTests'
                     archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+                  archiveArtifacts artifacts: '**/docroot',allowEmptyArchive: true
                 }
             }
         }
