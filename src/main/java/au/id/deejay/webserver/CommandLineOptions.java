@@ -23,7 +23,7 @@ public class CommandLineOptions {
 	/**
 	 * Default document root used.
 	 */
-	private static final String DEFAULT_DOCROOT = "./java-webserver-master/docroot";
+	private static final String DEFAULT_DOCROOT = "docroot";
 
 	/**
 	 * Default max number of worker threads.
