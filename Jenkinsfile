@@ -55,7 +55,7 @@ sh(script: command, returnStdout: true).trim()
             }
         }
 
-          
+    
       stage('Cleanup') {
             steps {
                 sh 'docker rmi -f $(docker images -f "dangling=true" -q)'
