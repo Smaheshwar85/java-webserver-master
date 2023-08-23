@@ -45,7 +45,7 @@ pipeline {
 sh(script: command, returnStdout: true).trim()
 
                  sh "docker tag gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/devopsjunction23/$repositoryname/gcr.io/devopsjunction23/java-webserver"
-                  sh "docker push us-central1-docker.pkg.dev/devopsjunction23/$repositoryname/gcr.io/devopsjunction23/java-webserver"
+                  sh "docker push us-central1-docker.pkg.dev/terraform-gcp-395808/$repositoryname/gcr.io/devopsjunction23/java-webserver"
                       
                     //sh "docker build -t $dockerImageTag ."
                     //sh "docker tag gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/my-project/my-repo/test-imagemy-image"
