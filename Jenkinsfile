@@ -32,9 +32,10 @@ pipeline {
     // When using a GString at least later Jenkins versions could only handle the env.WORKSPACE variant:
     echo "Current workspace is ${env.WORKSPACE}"
                       sh 'ls -lrt /var/lib/jenkins/workspace/pipeline-docker'
-                      sh'cp /var/lib/jenkins/workspace/pipeline-docker/ .'
+                      //sh'cp /var/lib/jenkins/workspace/pipeline-docker/ .'
                     sh 'mvn clean package -DskipTests'
-                    archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+                    //archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+                      archiveArtifacts artifacts: '**/*', allowEmptyArchive: true
                    
                 }
             }
