@@ -17,14 +17,17 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 # Set working directory
 WORKDIR .
 # This copies to local fat jar inside the image
-ADD ./target/*.jar ${JAVA_WEBSERVER_DEPLOY_DIR}/
-RUN chmod -R 755 ${JAVA_WEBSERVER_DEPLOY_DIR}
+#ADD ./target/*.jar ${JAVA_WEBSERVER_DEPLOY_DIR}/
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+#RUN chmod -R 755 ${JAVA_WEBSERVER_DEPLOY_DIR}
 #chmod -R 777 ./
 
 # Copy your Java application JAR or code to the container
 #COPY . /app
 
 # Command to run your Java application (replace with your actual command)
-CMD ["java", "-jar", "java-webserver-1.0.0.jar"]
+#CMD ["java", "-jar", "java-webserver-1.0.0.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
 
-EXPOSE 8080
+#EXPOSE 8080
