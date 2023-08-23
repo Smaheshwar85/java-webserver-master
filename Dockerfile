@@ -18,9 +18,9 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 WORKDIR .
 # This copies to local fat jar inside the image
 copy ./target/java-webserver-1.0.0.jar .
-copy ./target/java-webserver-1.0.0.jar .
-copy ./target/java-webserver-1.0.0.jar .
-copy ./target/java-webserver-1.0.0.jar .
+copy ./target/original-java-webserver-1.0.0.jar .
+copy ./target/java-webserver-1.0.0-sources.jar .
+copy ./target/java-webserver-1.0.0-javadoc.jar .
 
 #ARG JAR_FILE=target/*.jar
 #COPY ${JAR_FILE} app.jar
