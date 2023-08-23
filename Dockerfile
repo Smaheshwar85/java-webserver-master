@@ -28,6 +28,6 @@ RUN chmod -R 755 ${JAVA_WEBSERVER_DEPLOY_DIR}
 
 # Command to run your Java application (replace with your actual command)
 #CMD ["java", "-jar", "java-webserver-1.0.0.jar"]
-CMD ["java","-jar","java-webserver-1.0.0.jar"]
+CMD ["java","-jar","opt/java-webserver/java-webserver-1.0.0.jar"]
 
 EXPOSE 8085
