@@ -17,10 +17,10 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 # Set working directory
 WORKDIR .
 # This copies to local fat jar inside the image
-copy ./target/java-webserver-1.0.0.jar .
-copy ./target/original-java-webserver-1.0.0.jar .
-copy ./target/java-webserver-1.0.0-sources.jar .
-copy ./target/java-webserver-1.0.0-javadoc.jar .
+ADD ./target/java-webserver-1.0.0.jar .
+ADD ./target/original-java-webserver-1.0.0.jar .
+ADD ./target/java-webserver-1.0.0-sources.jar .
+ADD ./target/java-webserver-1.0.0-javadoc.jar .
 
 #ARG JAR_FILE=target/*.jar
 #COPY ${JAR_FILE} app.jar
@@ -31,7 +31,7 @@ copy ./target/java-webserver-1.0.0-javadoc.jar .
 #COPY . /app
 
 # Command to run your Java application (replace with your actual command)
-CMD ["java", "-jar", "/target/java-webserver-1.0.0.jar"]
+CMD ["java", "-jar", "./target/java-webserver-1.0.0.jar"]
 #CMD ["java","-jar","/app.jar"]
 
 EXPOSE 8085
