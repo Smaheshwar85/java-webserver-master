@@ -33,7 +33,8 @@ pipeline {
                 script {
                    def dockerImageTag = "${GCR_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
                     withCredentials([file(credentialsId: 'cred', variable: 'CRED')]) {
-                 sh "docker build -t $dockerImageTag ."
+                // sh "docker build -t $dockerImageTag ."
+                        sh "docker buildx build --platform linux/amd64 -t $dockerImageTag ."
                   def repositoryname = "${IMAGE_NAME}-${env.BUILD_NUMBER}"
 
                def command = """
