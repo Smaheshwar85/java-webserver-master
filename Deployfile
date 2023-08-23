@@ -71,10 +71,10 @@ def command = """
    
 """
 sh(script: command, returnStatus: true)
-sh "docker pull us-central1-docker.pkg.dev/xyz-java2/gcr.io/devopsjunction23/java-webserver"
-sh "docker tag us-docker.pkg.dev/xyz-java2/gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/terraform-gcp-395808/$repositoryname/gcr.io/devopsjunction23/java-webserver:34"
+
+sh "docker tag us-docker.pkg.dev/xyz-java2/gcr.io/devopsjunction23/java-webserver us-central1-docker.pkg.dev/terraform-gcp-395808/$repositoryname/gcr.io/devopsjunction23/java-webserver"
 sh "docker push us-central1-docker.pkg.dev/terraform-gcp-395808/$repositoryname/gcr.io/devopsjunction23/java-webserver:34"
-sh  "docker-credential-gcr get"
+
  
                                                        }
                                               }
