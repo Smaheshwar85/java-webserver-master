@@ -17,11 +17,12 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 # Set working directory
 WORKDIR .
 # This copies to local fat jar inside the image
-#ADD ./target/java-webserver-1.0.0.jar .
-#ADD ./target/original-java-webserver-1.0.0.jar .
-#ADD ./target/java-webserver-1.0.0-sources.jar .
-ADD ./target/java-webserver-1.0.0-javadoc.jar ${JAVA_WEBSERVER_DEPLOY_DIR}
-ADD ./docroot ${JAVA_WEBSERVER_DEPLOY_DIR}/
+
+ADD ./target/java-webserver-1.0.0.jar .
+ADD ./target/original-java-webserver-1.0.0.jar .
+ADD ./target/java-webserver-1.0.0-sources.jar .
+ADD ./target/java-webserver-1.0.0-javadoc.jar .
+ADD  docroot  .
 #ADD /var/lib/jenkins/workspace/pipeline-docker/docroot .
 
 #ARG JAR_FILE=target/*.jar
@@ -33,7 +34,7 @@ ADD ./docroot ${JAVA_WEBSERVER_DEPLOY_DIR}/
 #COPY . /app
 
 # Command to run your Java application (replace with your actual command)
-CMD ["java", "-jar", "./java-webserver-1.0.0.jar","opt/java-webserver/docroot"]
+CMD ["java", "-jar", "java-webserver-1.0.0.jar","docroot"]
 #CMD ["java","-jar","/app.jar"]
 
 EXPOSE 8085
