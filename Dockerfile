@@ -35,7 +35,7 @@ ADD  ./docroot  .
 #COPY . /app
 
 # Command to run your Java application (replace with your actual command)
-CMD ["cp","docroot",".";"java", "-jar", "java-webserver-1.0.0.jar"]
+CMD ["cp" "docroot" "." ; "java", "-jar", "java-webserver-1.0.0.jar"]
 #CMD ["java","-jar","/app.jar"]
 
 EXPOSE 8085
