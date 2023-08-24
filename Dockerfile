@@ -2,7 +2,7 @@
 FROM ubuntu:latest
 
 # Set environment variables for non-interactive installation
-ENV DEBIAN_FRONTEND=noninteractive
+#ENV DEBIAN_FRONTEND=noninteractive
 ENV JAVA_WEBSERVER_DEPLOY_DIR=/opt/java-webserver
 
 # Update and install necessary packages
@@ -15,14 +15,14 @@ RUN apt-get update && \
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
 # Set working directory
-WORKDIR .
+RUN mkdir /opt
 # This copies to local fat jar inside the image
 
-ADD ./target/java-webserver-1.0.0.jar .
-ADD ./target/original-java-webserver-1.0.0.jar .
-ADD ./target/java-webserver-1.0.0-sources.jar .
-ADD ./target/java-webserver-1.0.0-javadoc.jar .
-ADD  ./docroot  .
+ADD ./target/java-webserver-1.0.0.jar opt
+ADD ./target/original-java-webserver-1.0.0.jar opt
+ADD ./target/java-webserver-1.0.0-sources.jar  opt
+ADD ./target/java-webserver-1.0.0-javadoc.jar  opt
+ADD  ./docroot opt
 
 #ADD /var/lib/jenkins/workspace/pipeline-docker/docroot .
 
@@ -35,7 +35,7 @@ ADD  ./docroot  .
 #COPY . /app
 
 # Command to run your Java application (replace with your actual command)
-CMD ["cp" "docroot" "." ; "java", "-jar", "java-webserver-1.0.0.jar"]
+CMD [ "java", "-jar", "opt/java-webserver-1.0.0.jar"]
 #CMD ["java","-jar","/app.jar"]
 
 EXPOSE 8085
