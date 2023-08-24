@@ -33,7 +33,7 @@ ADD ./docroot ${JAVA_WEBSERVER_DEPLOY_DIR}
 #COPY . /app
 
 # Command to run your Java application (replace with your actual command)
-CMD ["java", "-jar", "java-webserver-1.0.0.jar"]
+CMD ["java", "-jar", "java-webserver-1.0.0.jar",/opt/java-webserver/docroot]
 #CMD ["java","-jar","/app.jar"]
 
 EXPOSE 8085
