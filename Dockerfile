@@ -21,7 +21,7 @@ WORKDIR .
 #ADD ./target/original-java-webserver-1.0.0.jar .
 #ADD ./target/java-webserver-1.0.0-sources.jar .
 ADD ./target/java-webserver-1.0.0-javadoc.jar ${JAVA_WEBSERVER_DEPLOY_DIR}
-ADD ./docroot ${JAVA_WEBSERVER_DEPLOY_DIR}
+ADD ./docroot ${JAVA_WEBSERVER_DEPLOY_DIR}/
 #ADD /var/lib/jenkins/workspace/pipeline-docker/docroot .
 
 #ARG JAR_FILE=target/*.jar
