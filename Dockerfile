@@ -22,7 +22,8 @@ ADD ./target/java-webserver-1.0.0.jar .
 ADD ./target/original-java-webserver-1.0.0.jar .
 ADD ./target/java-webserver-1.0.0-sources.jar .
 ADD ./target/java-webserver-1.0.0-javadoc.jar .
-ADD  docroot  .
+ADD  ./docroot  .
+
 #ADD /var/lib/jenkins/workspace/pipeline-docker/docroot .
 
 #ARG JAR_FILE=target/*.jar
@@ -34,7 +35,7 @@ ADD  docroot  .
 #COPY . /app
 
 # Command to run your Java application (replace with your actual command)
-CMD ["java", "-jar", "java-webserver-1.0.0.jar","docroot"]
+CMD ["java", "-jar", "java-webserver-1.0.0.jar";"docroot"]
 #CMD ["java","-jar","/app.jar"]
 
 EXPOSE 8085
